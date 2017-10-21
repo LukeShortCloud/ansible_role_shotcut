@@ -1,0 +1,13 @@
+---
+installation_dir: "{{ ansible_env.HOME }}"
+# View the latest releases here: https://github.com/mltframework/shotcut/releases
+shotcut_version:
+  folder: v17.10
+  archive: 171002
+shotcut_os:
+  # Valid options are "linux" or "osx"
+  name: linux
+  # Valid options are "tar.bz2" for linux or "dmg" for osx
+  archive: tar.bz2
+shotcut_archive: "shotcut-{{ shotcut_os.name }}-x86_64-{{ shotcut_version.archive }}.tar.bz2"
+shotcut_url: "https://github.com/mltframework/shotcut/releases/download/{{ shotcut_version.folder }}/{{ shotcut_archive }}"

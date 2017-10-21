@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Luke Short
+  description: A role to install, uninstall, or update the Shotcut video editor.
+  license: GPLv3
+  min_ansible_version: 2.3
+  platforms:
+    - name: Linux
+      versions:
+      - all
+    - name: Darwin
+  galaxy_tags:
+    - desktop
+    - editor
+    - shotcut
+    - sound
+    - video

@@ -1,0 +1,40 @@
+---
+- name: Checking to see if Shotcut is installed
+  stat:
+    path: "{{ installation_dir }}/Shotcut"
+  register: shotcut_stat
+
+- block:
+    - debug:
+        msg: Shotcut is already installed
+
+    - meta: end_play
+  when: install_state == "present" and shotcut_stat.stat.exists
+
+- name: Deleting Shotcut
+  file:
+    path: "{{ installation_dir }}/Shotcut"
+    state: absent
+  when: install_state == "absent" or install_state == "latest"
+
+- block:
+    - name: Downloading Shotcut
+      get_url:
+        url: "{{ shotcut_url }}"
+        dest: "{{ installation_dir }}/"
+    
+    - name: Extracting Shotcut
+      unarchive:
+        src: "{{ installation_dir }}/{{ shotcut_archive }}"
+        dest: "{{ installation_dir }}"
+
+    - name: Cleanup archive
+      file:
+        path: "{{ installation_dir }}/{{ shotcut_archive }}"
+
+    - name: Creating a symlink to the Shotcut app executable
+      file:
+        src: "{{ installation_dir }}/Shotcut/Shotcut.app/shotcut"
+        dest: "{{ ansible_env.HOME }}/bin/shotcut"
+        state: link
+  when: install_state == "present" or install_state == "latest"
