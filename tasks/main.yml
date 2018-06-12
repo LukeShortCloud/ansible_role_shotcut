@@ -31,6 +31,13 @@
     - name: Cleanup archive
       file:
         path: "{{ installation_dir }}/{{ shotcut_archive }}"
+        state: absent
+
+    - name: Creating local bin directory for the user
+      file:
+        path: "{{ ansible_env.HOME }}/bin"
+        state: directory
+        mode: 0755
 
     - name: Creating a symlink to the Shotcut app executable
       file:
