@@ -1,0 +1,5 @@
+---
+# Example: v18.06
+shotcut_version_friendly: "v{{ shotcut_version_full[0:2] }}.{{ shotcut_version_full[2:4] }}"
+shotcut_archive: "shotcut-{{ shotcut_os }}-x86_64-{{ shotcut_version_full }}.{% if shotcut_os == 'linux' %}tar.bz2{% elif shotcut_os == 'osx' %}dmg{% endif %}"
+shotcut_url: "https://github.com/mltframework/shotcut/releases/download/{{ shotcut_version_friendly }}/{{ shotcut_archive }}"

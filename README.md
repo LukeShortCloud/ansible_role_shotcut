@@ -17,10 +17,9 @@ Variables:
     * present = Install Shotcut if it is not present already.
     * latest = Update Shotcut.
 * installation_dir = By default this is set to a user's home directory, as defined by the `$HOME` environment variable.
-* shotcut_archive = The name of the archive that will be downloaded.
-* shotcut_url = The full URL link to download the Shotcut binaries for Linux.
-
-The information for different versions to use for `shotcut_archive` and `shotcut_url` can be found here: https://github.com/mltframework/shotcut/releases
+* shotcut_os = The operating system package to use. Currently only `linux` is supported.
+* shotcut_version_full = The full 6-digit Shotcut version number. This should be in a time format similar to ISO.
+    * Releases: https://github.com/mltframework/shotcut/releases
 
 
 ## Dependencies
@@ -30,26 +29,37 @@ None.
 
 ## Example Playbooks
 
-Install Shotcut:
+Playbook file (shotcut.yml):
 
 ```
 ---
 - hosts: localhost
-  vars:
-    install_state: latest
   roles:
     - ansible-role-shotcut
+```
+
+Install Shotcut:
+
+```
+$ ansible-playbook shotcut.yml
+```
+
+Install a specific version of Shotcut:
+
+```
+$ ansible-playbook --extra-vars "shotcut_version_full=180508" shotcut.yml
+```
+
+Update Shotcut:
+
+```
+$ ansible-playbook --extra-vars "install_state=latest" shotcut.yml
 ```
 
 Uninstall Shotcut:
 
 ```
----
-- hosts: localhost
-  vars:
-    install_state: absent
-  roles:
-    - ansible-role-shotcut
+$ ansible-playbook --extra-vars "install_state=absent" shotcut.yml
 ```
 
 ## License
