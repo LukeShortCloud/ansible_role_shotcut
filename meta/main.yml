@@ -4,28 +4,28 @@ galaxy_info:
   issue_tracker_url: https://github.com/ekultails/ansible_role_shotcut/issues
   license: GPLv3
   min_ansible_version: 2.6
-    platforms:
-      - name: Debian
-        versions:
-          - all
-      - name: EL
-        versions:
-          - all
-      - name: Fedora
-        versions:
-          - all
-      - name: GenericLinux
-        versions:
-          - all
-      - name: opensuse
-        versions:
-          - all
-      - name: SLES
-        versions:
-          - all
-      - name: Ubuntu
-        versions:
-          - all
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: GenericLinux
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: SLES
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
   galaxy_tags:
     - desktop
     - editor
